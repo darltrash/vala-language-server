@@ -423,6 +423,20 @@ class Vls.Server : Jsonrpc.Server {
             }
         }
 
+        // try vala_flags.txt
+        if (backend_project == null) {
+            var flags_file = root_dir.get_child ("vala_flags.txt");
+
+            if (flags_file.query_exists (cancellable)) {
+                try {
+                    backend_project = new FlagsProject (root_path, file_cache);
+                    debug("[initialize] loaded vala_args.txt!");
+                } catch (Error e) {
+                    debug("[initialize] parsing vala_args.txt failed - %s", e.message);
+                }
+            }
+        }
+
         // show messages if we could not get a backend-specific project
         if (backend_project == null) {
             var cmake_file = root_dir.get_child ("CMakeLists.txt");

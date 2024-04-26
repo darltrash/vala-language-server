@@ -75,6 +75,7 @@ We recommend using VSCode with the [Vala plugin](https://marketplace.visualstudi
 - [ ] supported projects
     - [x] meson
     - [x] `compile_commands.json`
+    - [x] `vala_flags.txt`
     - [x] Vala script (file beginning with `#!/usr/bin/env -S vala` shebang)
     - [ ] cmake
     - [ ] autotools
